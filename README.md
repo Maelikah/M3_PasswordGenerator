@@ -49,6 +49,8 @@ https://maelikah.github.io/Module3/
 
 Here is a screenshot of the deployed webpage for reference:
 
+![Screenshot](assets/images/screenshot.png)
+
 ## Credits
 
 JavaScript tutorials:

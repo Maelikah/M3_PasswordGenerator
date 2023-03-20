@@ -36,7 +36,7 @@ header {
   background-size: cover;
   border-radius: 5px;
   border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  box-shadow: rgb(3, 52, 109) 1px 1px 20px 2px;
   color: black;
   font-size: 18px;
   margin: 30px auto;
@@ -119,7 +119,63 @@ button[disabled] {
   border-radius: 6px;
   resize: none;
   overflow: hidden;
+  opacity: 80%;
 }
+
+/* CSS code for new Instructions & Log Section */
+.instructions {
+  background-image: url("../images/background2.jpg");
+  background-size: cover;
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(248, 170, 2, 0.8) 1px 1px 20px 2px;
+  color: black;
+  font-size: 18px;
+  margin: 30px auto;
+  max-width: 800px;
+  padding: 30px 40px;
+}
+
+.instructions-header::after {
+  content: " ";
+  display: block;
+  width: 100%;
+  background: #032f5c;
+  height: 2px;
+}
+
+.instructions-body {
+  min-height: 200px;
+  
+}
+
+textarea {
+  height: 200px;
+}
+
+#log {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  display: block;
+  width: 100%;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 85px;
+  font-size: 1.2rem;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: .5px solid goldenrod;
+  border-radius: 6px;
+  resize: none;
+  overflow: hidden;
+  opacity: 60%;
+}
+
 
 @media (max-width: 690px) {
   .btn {
@@ -128,7 +184,7 @@ button[disabled] {
     padding: 10px 15px;
   }
 
-  #password {
+  #password, #log {
     font-size: 1rem;
   }
 }

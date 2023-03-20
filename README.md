@@ -58,6 +58,7 @@ JavaScript tutorials:
 * https://www.javascripttutorial.net/
 * https://www.youtube.com/watch?v=W6NZfCO5SIk
 * https://www.youtube.com/watch?v=LDgPTw6tePk
+* https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/
 
 
 ## License

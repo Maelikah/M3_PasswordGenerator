@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator - This app generates a random password based on input conditions</title>
+    <title>Password Generator - This app generates a random password based on user input conditions</title>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
@@ -13,7 +13,7 @@
       <header>
         <h1>Password Generator</h1>
       </header>
-      <div class="card">
+      <div class="card background">
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
@@ -27,6 +27,17 @@
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
+        </div>
+      </div>
+      <div class="instructions">
+        <div class="instructions-header">
+          <h3>Instructions & Actions Log</h3>
+        </div>
+        <div class="instructions-body">
+          <textarea
+          readonly
+            id="log"
+          ></textarea>
         </div>
       </div>
     </div>

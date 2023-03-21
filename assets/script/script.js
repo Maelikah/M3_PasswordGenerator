@@ -150,10 +150,12 @@ function specialchars(){
 
 // Write function to validate at least one character type was selected
 function inputValidation () {
-  if (UpperCasePrompt == "no" && LowerCasePrompt == "no" && numbersPrompt == "no" && specialPrompt == "no"){
+  if (UpperCasePrompt === "no" && LowerCasePrompt === "no" && numbersPrompt === "no" && specialPrompt === "no"){
     window.alert("\n⚠️ WARNING ⚠️  \n\nAt least one character type must be selected.\n The page will be reloaded");
     window.location.reload();
   } else {
+    var dataInput = document.querySelector("#log");
+    dataInput.value = "Here is the data that you have input to be considered for your password: \n\nPassword Length: " + pLength + "\nUpperCase characters selected: " + UpperCasePrompt + "\nLowerCase characters selected: " + LowerCasePrompt + "\nNumbers selected: " + numbersPrompt + "\nSpecial characters selected: " + specialPrompt;
     return;
   }
 }

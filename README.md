@@ -1,4 +1,4 @@
-# Module 3 Challenge - Password Generator
+# M3_PasswordGenerator
 Password Generation Challenge. The purpose is to create an application with javascript that will generate a random password based on input conditions
 
 ## Description
@@ -41,7 +41,7 @@ The webpage should be navigated and the following acceptance criteria should be 
 
 The github URL containing the code for this challenge is located at:
 
-https://github.com/Maelikah/Module3
+https://github.com/Maelikah/M3_PasswordGenerator
 
 The github pages URL containing the deployed webpage is located at:
 

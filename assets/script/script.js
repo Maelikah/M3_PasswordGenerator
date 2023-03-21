@@ -11,11 +11,12 @@ var numbersPrompt = "";
 var NumbersSet = "0123456789";
 var specialPrompt = "";
 var SpecialSet = "\\!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-
+var pwdchoices = "";
 
 
 // Write password to the #password input
 function writePassword() {
+  passwordLength ();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -25,13 +26,21 @@ function writePassword() {
 
 // Write password input conditions and requirements
 function generatePassword() {
-  console.log("this is the generate Password function");
-  passwordLength ();
+  var result = "";
+  var pwdchoiceslength = pwdchoices.length
+  for (var i = 0; i < pLength; i++) {
+    result += pwdchoices.charAt(Math.floor(Math.random() * pwdchoiceslength));
+  } 
+  return result;
+
+//  passwordLength ();
   // console.log(pLength);
   // upperCasechars();
   // console.log(UpperCasePrompt);
-
+  
 }
+
+
 
 // Write function to store password length variable
 function passwordLength () {  
@@ -43,8 +52,6 @@ function passwordLength () {
     window.alert("❗ You have clicked on CANCEL or clicked OK without data input. The page will reload and the previously stored choices will be removed.");
     window.location.reload(); 
   } else if (pLength >= minLength && pLength <= maxLength) {
-    window.alert("\nYou selected " + pLength + " characters");
-    console.log("The number of selected characters was " + pLength);
     upperCasechars();
   } else {
     window.alert("\n⚠️ Invalid number of characters ⚠️ \n\nPlease select a password length between 8 and 128 characters");
@@ -63,12 +70,8 @@ function upperCasechars(){
   // Change Answer to lowercase characters to avoid errors in logic
   UpperCasePrompt = UpperCasePrompt.toLowerCase();
   if (UpperCasePrompt === "yes") {  
-    window.alert("\nYou selected " + UpperCasePrompt + " to include upper case characters.");
-    console.log("The user said " + UpperCasePrompt + " to the inclusion of upper case characters.");
     lowerCasechars();
   } else if (UpperCasePrompt === "no") {
-    window.alert("\nYou selected " + UpperCasePrompt + " to the inclusion of upper case characters.");
-    console.log("The user said " + UpperCasePrompt + " to the inclusion of upper case characters.");
     lowerCasechars();
   } else if (UpperCasePrompt !== "") { 
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include upper caase characters in the password.");
@@ -87,12 +90,8 @@ function lowerCasechars(){
   // Change Answer to lowercase characters to avoid errors in logic
   LowerCasePrompt = LowerCasePrompt.toLowerCase();
   if (LowerCasePrompt === "yes") {  
-    window.alert("\nYou selected " + LowerCasePrompt + " to include lower case characters.");
-    console.log("The user said " + LowerCasePrompt + " to the inclusion of lower case characters.");
     numberchars();
   } else if (LowerCasePrompt === "no") {
-    window.alert("\nYou selected " + LowerCasePrompt + " to the inclusion of lower case characters.");
-    console.log("The user said " + LowerCasePrompt + " to the inclusion of lower case characters.");
     numberchars();
   } else if (LowerCasePrompt !== "") {
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include lower caase characters in the password.");
@@ -111,12 +110,8 @@ function numberchars(){
   // Change Answer to lowercase characters to avoid errors in logic
   numbersPrompt = numbersPrompt.toLowerCase();
   if (numbersPrompt === "yes") {  
-    window.alert("\nYou selected " + numbersPrompt + " to include numbers.");
-    console.log("The user said " + numbersPrompt + " to the inclusion of numbers.");
     specialchars();
   } else if (numbersPrompt === "no") {
-    window.alert("\nYou selected " + numbersPrompt + " to the inclusion of numbers.");
-    console.log("The user said " + numbersPrompt + " to the inclusion of numbers.");
     specialchars();
   } else if (numbersPrompt !== ""){
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include numbers in the password.");
@@ -135,12 +130,8 @@ function specialchars(){
   // Change Answer to lowercase characters to avoid errors in logic
   specialPrompt = specialPrompt.toLowerCase();
   if (specialPrompt === "yes") {  
-    window.alert("\nYou selected " + specialPrompt + " to include special characters.");
-    console.log("The user said " + specialPrompt + " to the inclusion of special characters.");
     inputValidation();
   } else if (specialPrompt === "no") {
-    window.alert("\nYou selected " + specialPrompt + " to the inclusion of special characters.");
-    console.log("The user said " + specialPrompt + " to the inclusion of special characters.");
     inputValidation();
   } else if (specialPrompt !== "") {
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include special characters in the password.");
@@ -156,8 +147,47 @@ function inputValidation () {
   } else {
     var dataInput = document.querySelector("#log");
     dataInput.value = "Here is the data that you have input to be considered for your password: \n\nPassword Length: " + pLength + "\nUpperCase characters selected: " + UpperCasePrompt + "\nLowerCase characters selected: " + LowerCasePrompt + "\nNumbers selected: " + numbersPrompt + "\nSpecial characters selected: " + specialPrompt;
-    return;
+    randomPwd();
   }
+}
+
+// Write function to generate password based on provided input
+function randomPwd () {
+  if (UpperCasePrompt === "yes" && LowerCasePrompt === "yes" && numbersPrompt === "yes" && specialPrompt === "yes") {
+    pwdchoices = UpperCaseSet.concat(LowerCaseSet,NumbersSet,SpecialSet);
+  } else if (UpperCasePrompt === "yes" && LowerCasePrompt === "yes" && numbersPrompt === "yes") {
+    pwdchoices = UpperCaseSet.concat(LowerCaseSet,NumbersSet);
+  } else if (UpperCasePrompt === "yes" && LowerCasePrompt === "yes" && specialPrompt === "yes") {
+    pwdchoices = UpperCaseSet.concat(LowerCaseSet,SpecialSet);
+  } else if (UpperCasePrompt === "yes" && numbersPrompt === "yes" && specialPrompt === "yes") {
+    pwdchoices = UpperCaseSet.concat(NumbersSet,SpecialSet);
+  } else if (UpperCasePrompt === "yes" && LowerCasePrompt === "yes") {
+    pwdchoices = UpperCaseSet.concat(LowerCaseSet);
+  } else if (UpperCasePrompt === "yes" && numbersPrompt === "yes") {
+    pwdchoices = UpperCaseSet.concat(NumbersSet);
+  } else if (UpperCasePrompt === "yes" && specialPrompt === "yes") {
+    pwdchoices = UpperCaseSet.concat(SpecialSet);
+  } else if (UpperCasePrompt === "yes") {
+    pwdchoices = UpperCaseSet;
+  } else if (LowerCasePrompt === "yes" && numbersPrompt === "yes" && specialPrompt === "yes") {
+    pwdchoices = LowerCaseSet.concat(NumbersSet,SpecialSet);
+  } else if (LowerCasePrompt === "yes" && numbersPrompt === "yes") {
+    pwdchoices = LowerCaseSet.concat(NumbersSet);
+  } else if (LowerCasePrompt === "yes" && specialPrompt === "yes") {
+    pwdchoices = LowerCaseSet.concat(SpecialSet);
+  } else if (LowerCasePrompt === "yes") {
+    pwdchoices = LowerCaseSet;
+  } else if (numbersPrompt === "yes" && specialPrompt === "yes") {
+    pwdchoices = NumbersSet.concat(SpecialSet);
+  } else if (numbersPrompt === "yes") {
+    pwdchoices = NumbersSet;
+  } else if (specialPrompt === "yes") {
+    pwdchoices = SpecialSet;
+  }
+
+  console.log (pwdchoices);
+
+  generatePassword();
 }
 
 

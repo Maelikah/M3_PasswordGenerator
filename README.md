@@ -41,11 +41,11 @@ The webpage should be navigated and the following acceptance criteria should be 
 
 The github URL containing the code for this challenge is located at:
 
-https://github.com/Maelikah/M3_PasswordGenerator
+https://github.com/Maelikah/M3_PasswordGenerator/
 
 The github pages URL containing the deployed webpage is located at:
 
-https://maelikah.github.io/Module3/
+https://maelikah.github.io/M3_PasswordGenerator/
 
 Here is a screenshot of the deployed webpage for reference:
 

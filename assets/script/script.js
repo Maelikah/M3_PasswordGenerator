@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 //Global Variables
-var pLength = 0;
+var pLength = "";
 var UpperCasePrompt = "";
 var UpperCaseSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var LowerCasePrompt = "";
@@ -40,7 +40,7 @@ function passwordLength () {
   pLength = window.prompt("\nPlease select a password length. \nIt should be between 8 and 128 characters");
   // Reload page if user clicks cancel on window prompt to restore "Your Secure Password" placeholder
   if(!pLength) {
-    window.alert("❗ You have clicked on CANCEL. The page will reload and the previously stored choices will be removed.");
+    window.alert("❗ You have clicked on CANCEL or clicked OK without data input. The page will reload and the previously stored choices will be removed.");
     window.location.reload(); 
   } else if (pLength >= minLength && pLength <= maxLength) {
     window.alert("\nYou selected " + pLength + " characters");
@@ -57,20 +57,20 @@ function upperCasechars(){
   UpperCasePrompt = window.prompt("\nWould you like to include upper case characters in your password? \n\nYes / No");  
   // End function if user clicks cancel on window prompt to restore "Your Secure Password" placeholder
   if(!UpperCasePrompt) {
-    window.alert("❗ You have clicked on CANCEL. The page will reload and the previously stored choices will be removed.");
+    window.alert("❗ You have clicked on CANCEL or clicked OK without data input. The page will reload and the previously stored choices will be removed.");
     window.location.reload(); 
-  } 
+  }
   // Change Answer to lowercase characters to avoid errors in logic
   UpperCasePrompt = UpperCasePrompt.toLowerCase();
-  if (UpperCasePrompt == "yes") {  
+  if (UpperCasePrompt === "yes") {  
     window.alert("\nYou selected " + UpperCasePrompt + " to include upper case characters.");
     console.log("The user said " + UpperCasePrompt + " to the inclusion of upper case characters.");
     lowerCasechars();
-  } else if (UpperCasePrompt == "no") {
+  } else if (UpperCasePrompt === "no") {
     window.alert("\nYou selected " + UpperCasePrompt + " to the inclusion of upper case characters.");
     console.log("The user said " + UpperCasePrompt + " to the inclusion of upper case characters.");
     lowerCasechars();
-  } else {
+  } else if (UpperCasePrompt !== "") { 
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include upper caase characters in the password.");
     upperCasechars();
   }
@@ -81,20 +81,20 @@ function lowerCasechars(){
   LowerCasePrompt = window.prompt("\nWould you like to include lower case characters in your password? \n\nYes / No");
   // End function if user clicks cancel on window prompt to restore "Your Secure Password" placeholder
   if(!LowerCasePrompt) {
-    window.alert("❗ You have clicked on CANCEL. The page will reload and the previously stored choices will be removed.");
+    window.alert("❗ You have clicked on CANCEL or clicked OK without data input. The page will reload and the previously stored choices will be removed.");
     window.location.reload(); 
   } 
   // Change Answer to lowercase characters to avoid errors in logic
   LowerCasePrompt = LowerCasePrompt.toLowerCase();
-  if (LowerCasePrompt == "yes") {  
+  if (LowerCasePrompt === "yes") {  
     window.alert("\nYou selected " + LowerCasePrompt + " to include lower case characters.");
     console.log("The user said " + LowerCasePrompt + " to the inclusion of lower case characters.");
-    return;
-  } else if (LowerCasePrompt == "no") {
+    numberchars();
+  } else if (LowerCasePrompt === "no") {
     window.alert("\nYou selected " + LowerCasePrompt + " to the inclusion of lower case characters.");
     console.log("The user said " + LowerCasePrompt + " to the inclusion of lower case characters.");
-    return;
-  } else {
+    numberchars();
+  } else if (LowerCasePrompt !== "") {
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include lower caase characters in the password.");
     lowerCasechars();
   }
@@ -105,20 +105,20 @@ function numberchars(){
   numbersPrompt = window.prompt("\nWould you like to include numbers in your password? \n\nYes / No");
   // End function if user clicks cancel on window prompt to restore "Your Secure Password" placeholder
   if(!numbersPrompt) {
-    window.alert("❗ You have clicked on CANCEL. The page will reload and the previously stored choices will be removed.");
+    window.alert("❗ You have clicked on CANCEL or clicked OK without data input. The page will reload and the previously stored choices will be removed.");
     window.location.reload(); 
   } 
   // Change Answer to lowercase characters to avoid errors in logic
   numbersPrompt = numbersPrompt.toLowerCase();
-  if (numbersPrompt == "yes") {  
+  if (numbersPrompt === "yes") {  
     window.alert("\nYou selected " + numbersPrompt + " to include numbers.");
     console.log("The user said " + numbersPrompt + " to the inclusion of numbers.");
     specialchars();
-  } else if (numbersPrompt == "no") {
+  } else if (numbersPrompt === "no") {
     window.alert("\nYou selected " + numbersPrompt + " to the inclusion of numbers.");
     console.log("The user said " + numbersPrompt + " to the inclusion of numbers.");
     specialchars();
-  } else {
+  } else if (numbersPrompt !== ""){
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include numbers in the password.");
     numberchars();
   }
@@ -129,26 +129,34 @@ function specialchars(){
   specialPrompt = window.prompt("\nWould you like to include special characters in your password? \n\nYes / No");
   // End function if user clicks cancel on window prompt to restore "Your Secure Password" placeholder
   if(!specialPrompt) {
-    window.alert("❗ You have clicked on CANCEL. The page will reload and the previously stored choices will be removed.");
+    window.alert("❗ You have clicked on CANCEL or clicked OK without data input. The page will reload and the previously stored choices will be removed.");
     window.location.reload(); 
   } 
   // Change Answer to lowercase characters to avoid errors in logic
   specialPrompt = specialPrompt.toLowerCase();
-  if (specialPrompt == "yes") {  
+  if (specialPrompt === "yes") {  
     window.alert("\nYou selected " + specialPrompt + " to include special characters.");
     console.log("The user said " + specialPrompt + " to the inclusion of special characters.");
-    return;
-  } else if (specialPrompt == "no") {
+    inputValidation();
+  } else if (specialPrompt === "no") {
     window.alert("\nYou selected " + specialPrompt + " to the inclusion of special characters.");
     console.log("The user said " + specialPrompt + " to the inclusion of special characters.");
-    return;
-  } else {
+    inputValidation();
+  } else if (specialPrompt !== "") {
     window.alert("\n⚠️ Invalid answer ⚠️  \n\nPlease type yes or no to indicate whether you want to include special characters in the password.");
     numberchars();
   }
 }
 
 // Write function to validate at least one character type was selected
+function inputValidation () {
+  if (UpperCasePrompt == "no" && LowerCasePrompt == "no" && numbersPrompt == "no" && specialPrompt == "no"){
+    window.alert("\n⚠️ WARNING ⚠️  \n\nAt least one character type must be selected.\n The page will be reloaded");
+    window.location.reload();
+  } else {
+    return;
+  }
+}
 
 
 // Add event listener to generate button

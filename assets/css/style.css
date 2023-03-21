@@ -65,7 +65,7 @@ header {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: #032f5c;
   height: 2px;
 }
 
@@ -89,6 +89,11 @@ header {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+}
+
+.btn:hover {
+  background-color: hsl(0, 95%, 26%);
+
 }
 
 button[disabled] {
